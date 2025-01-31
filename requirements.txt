@@ -1,0 +1,7 @@
+boto3>=1.36.9
+opensearch-py>=2.8.0
+botocore>=1.36.9
+awscli>=1.37.9
+retrying>=1.3.4
+ipywidgets>=8.1.5
+iprogress>=0.4
