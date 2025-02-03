@@ -231,7 +231,7 @@ Resources:
               echo "Cloning git repository..."
               sudo yum install -y git
               cd /home/ec2-user/SageMaker
-              git clone https://github.com/aws-samples/Preventing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache.git
+              git clone https://github.com/aws-samples/Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache.git
               echo "Repository cloned successfully!"
 
 Outputs:

@@ -1,4 +1,4 @@
-## Preventing Hallucinations in LLM Agents with Amazon Bedrock Knowledge Bases
+## Reducing Hallucinations in LLM Agents with Amazon Bedrock Knowledge Bases
 
 This repository contains sample code demonstrating how to implement a verified semantic cache using Amazon Bedrock Knowledge Bases to prevent hallucinations in Large Language Model (LLM) responses while improving latency and reducing costs.
 
@@ -30,24 +30,24 @@ The solution implements a read-only semantic cache that acts as an intelligent i
 
 1. Clone this repository.
 ```bash
-git clone https://github.com/aws-samples/Preventing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache.git && cd Preventing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache
+git clone https://github.com/aws-samples/Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache.git && cd Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache
 ```
 
 2. Deploy the provided AWS CloudFormation template to setup an Amazon SageMaker notebook.
 ```
 aws cloudformation deploy \
     --template-file ./sagemaker_notebook.yaml \
-    --stack-name PreventingHallucinationsDemoStack \
+    --stack-name ReducingHallucinationsDemoStack \
     --capabilities CAPABILITY_NAMED_IAM
 ```
 
 3. Navigate to the Amazon SageMaker AI console (https://console.aws.amazon.com/sagemaker), and click on "Notebooks."
 
-4. Open "PreventingHallucinationsDemoStack-SageMakerNotebook" as a Jupyter Notebook and follow the instructions in verified_semantic_cache.ipynb. This GitHub repository should already be cloned and available in the Notebook.
+4. Open "ReducingHallucinationsDemoStack-SageMakerNotebook" as a Jupyter Notebook and follow the instructions in verified_semantic_cache.ipynb. This GitHub repository should already be cloned and available in the Notebook.
 
 5. Delete the AWS CloudFormation stack to prevent unnecessary cost.
 ```
-aws cloudformation delete-stack --stack-name PreventingHallucinationsDemoStack
+aws cloudformation delete-stack --stack-name ReducingHallucinationsDemoStack
 ```
 
 ## Security
