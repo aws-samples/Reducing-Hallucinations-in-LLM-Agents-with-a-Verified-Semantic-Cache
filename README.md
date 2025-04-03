@@ -1,60 +1,30 @@
-## Reducing Hallucinations in LLM Agents with Amazon Bedrock Knowledge Bases
+## Building a Data Analytics Bedrock Agent
 
-This repository contains sample code demonstrating how to implement a verified semantic cache using Amazon Bedrock Knowledge Bases to prevent hallucinations in Large Language Model (LLM) responses while improving latency and reducing costs.
-
-### Overview
-
-The solution implements a read-only semantic cache that acts as an intelligent intermediary layer between users and Amazon Bedrock Agents. When a user submits a query, the system:
-
-1. Evaluates semantic similarity with existing verified questions in the knowledge base
-2. For highly similar queries (>80% match), returns curated & verified answers directly
-3. For partial matches (60-80%), uses verified answers as few-shot examples
-4. For low similarity matches (<60%), falls back to standard LLM processing
-
-### Benefits
-
-- **Reduced Hallucinations**: Uses verified answers for known queries
-- **Lower Latency**: Provides near-instantaneous responses for cached queries
-- **Cost Optimization**: Avoids unnecessary LLM invocations
-- **Improved Accuracy**: Uses few-shot examples to guide LLM responses
+This repository contains a comprehensive workshop demonstrating how to build powerful SQL assistants using Amazon Bedrock Agents. The code shows how to create an AI agent that translates natural language questions into SQL queries for data analysis in a returns and recommerce business context.
 
 ### Prerequisites
 
 - An AWS account with access to Amazon Bedrock
 - Access to the following foundation models:
-  - Anthropic Claude Sonnet v1 (claude-3-sonnet-20240229-v1:0)
-  - Amazon Titan Text Embeddings v2
-- AWS CLI configured with appropriate credentials
+  - Anthropic Claude 3.5 Haiku (us.anthropic.claude-3-5-haiku-20241022-v1:0)
 
 ### Getting Started
 
-1. Clone this repository.
-```bash
-git clone https://github.com/aws-samples/Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache.git && cd Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache
-```
+0. Create your [Burner AWS account](https://access.amazon.com/aws/burner) and log in. Please ensure you're operating in `us-east-1` region for all following steps.
 
-2. Deploy the provided AWS CloudFormation template to setup an Amazon SageMaker notebook.
+1. Navigate to [SageMaker Service Quotas](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-8E454C05) and request additional account-level quota for `ml.t3.large for notebook instance usage` instances. Set it to **6** for burner accounts.
+
+2. Ensure you have enabled [Model Access](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess) to all the foundation models in Amazon Bedrock:
+
+3. Navigate to your [AWS CloudShell Console](https://us-east-1.console.aws.amazon.com/cloudshell) and run the following command. It will deploy a AWS CloudFormation stack in your account.
 ```
+git clone -b devcon-2025-branch --single-branch \
+    https://github.com/aws-samples/Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache.git && \
+cd Reducing-Hallucinations-in-LLM-Agents-with-a-Verified-Semantic-Cache && \
 aws cloudformation deploy \
     --template-file ./sagemaker_notebook.yaml \
-    --stack-name ReducingHallucinationsDemoStack \
+    --stack-name DevConLabStack \
     --capabilities CAPABILITY_NAMED_IAM
 ```
 
-3. Navigate to the Amazon SageMaker AI console (https://console.aws.amazon.com/sagemaker), and click on "Notebooks."
-
-4. Open "ReducingHallucinationsDemoStack-SageMakerNotebook" as a Jupyter Notebook and follow the instructions in verified_semantic_cache.ipynb. This GitHub repository should already be cloned and available in the Notebook.
-
-5. Delete the AWS CloudFormation stack to prevent unnecessary cost.
-```
-aws cloudformation delete-stack --stack-name ReducingHallucinationsDemoStack
-```
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
+4. Navigate to the Amazon SageMaker AI console (https://us-east-1.console.aws.amazon.com/sagemaker/home?region=us-east-1#/notebooks-and-git-repos), and click on "Notebooks." Open "DevConLabStack-SageMakerNotebook" as a Jupyter Notebook and follow the instructions in main.ipynb.
